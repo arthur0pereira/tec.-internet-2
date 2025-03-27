@@ -1,0 +1,11 @@
+#conteudo {
+    background-color: rgb(182, 182, 182);
+}
+
+.sair {
+    background: red;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 8px 12px;
+    display: inline-block;
+}
