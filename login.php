@@ -5,6 +5,7 @@ include("conexao.php");
 $cpf=$_POST["cpf"];
 $senha=$_POST["senha"];
 
+
 if(!isset($_POST['cpf']) || $_POST['cpf'] == ''){
     die("insira um cpf");
 }
@@ -22,13 +23,11 @@ if(isset($row) && $row['nome'] != ''){
     session_start();
     $_SESSION["cpf"] = $cpf;
     $_SESSION["senha"] = $senha;
-    $_SESSION["nome"] = $row['$nome'];
+    $_SESSION["nome"] = $row['nome'];
     header("Location: principal.php");
 }else{
     echo "senha incorreta";
 };
-
-
 
 
 

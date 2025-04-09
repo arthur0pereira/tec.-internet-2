@@ -1,8 +1,15 @@
 <?php
-session_start();
 
-echo "nome: " . $_SESSION['nome'].'<br>';
+session_start();
+if (!isset($_SESSION['nome'])) {
+    header("Location: login.php"); 
+}
+$nome = $_SESSION['nome'];
+// Verifica se a sessão está iniciada e se o nome está definido
+
+$nome = isset($_SESSION['nome']) ? $_SESSION['nome'] : null;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt_br">
@@ -16,10 +23,11 @@ echo "nome: " . $_SESSION['nome'].'<br>';
 
 <body id="conteudo">
     <header>
-        <p>Olá</p>
-
+        <div class="cabecalho">
+            <p>Bem Vindo, <?php echo htmlspecialchars($nome);?> !</p> <!-- Exibe o nome -->
+        </div>
         <div class="sair">
-            <button>Sair</button>
+            <a href="">Sair</a>
         </div>
     </header>
 
