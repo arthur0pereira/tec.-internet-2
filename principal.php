@@ -16,7 +16,7 @@ $nome = isset($_SESSION['nome']) ? $_SESSION['nome'] : null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/style_principal.css">
     <title>unifilmes</title>
     
 </head>
@@ -26,7 +26,7 @@ $nome = isset($_SESSION['nome']) ? $_SESSION['nome'] : null;
         <div class="cabecalho">
             <p>Bem Vindo, <?php echo htmlspecialchars($nome);?> !</p> <!-- Exibe o nome -->
         </div>
-        <div class="sair">
+        <div>
             <a href="">Sair</a>
         </div>
     </header>
