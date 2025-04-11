@@ -1,43 +1,103 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: rgb(182, 182, 182);
+* {
     margin: 0;
     padding: 0;
-}
-
-#conteudo {
-    background-color: rgb(182, 182, 182);
-}
-
-.cabecalho {
-    background-color: rgb(131, 130, 130);
-    padding: 20px;
-    text-align: center;
-}
-
-.cabecalho h1 {
-    color: rgb(2, 53, 53);
-    font-size: 36px;
-    margin: 0;
-}
-
-a {
-    background: rgb(2, 53, 53);
-    text-decoration: none;
-    border-radius: 10px;
-    padding: 8px 12px;
-    display: inline-block;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    font-size: 17px;
-    font-weight: bold;
-    color: rgb(199, 255, 237);
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-a:hover {        
-    transform: scale(1.02);   
+    box-sizing: border-box;
   }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #eef2f3, #d9e2ec);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Cabeçalho */
+  header {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    font-size: 24px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  header a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  header a:hover {
+    color: #ddd;
+  }
+  
+  /* Conteúdo principal */
+  #conteudo > div {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    gap: 40px;
+    flex: 1;
+  }
+  
+  /* Menu lateral */
+  .menu {
+    flex: 1 1 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .menu h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #2575fc;
+  }
+  
+  .menu p {
+    margin: 5px 0;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .menu p:hover {
+    color: #6a11cb;
+  }
+  
+  /* Área de filmes */
+  .filmes {
+    flex: 3;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .filmes h2 {
+    font-size: 26px;
+    color: #444;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    #conteudo > div {
+      flex-direction: column;
+    }
+  
+    header {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap');
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

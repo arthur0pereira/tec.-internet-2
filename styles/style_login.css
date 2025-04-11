@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body.bg-custom {
+    @apply bg-gradient-to-br from-sky-300 to-blue-500 min-h-screen;
+}
+
+.login {
+    @apply bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 w-full max-w-xs;
+}
+
+.login h2 {
+    @apply text-center text-2xl font-bold mb-4 text-gray-800;
+}
+
+input[type="text"],
+input[type="password"] {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400;
+}
+
+label {
+    @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+button[type="submit"] {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-400;
+}
+
+.bg-red-500 {
+    @apply bg-red-500 text-white text-sm p-2 rounded mb-4;
+}
