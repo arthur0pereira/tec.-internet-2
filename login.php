@@ -2,32 +2,45 @@
 session_start();
 include("conexao.php");
 
-$erro = '';
+$cpf=$_POST["cpf"];
+$senha=$_POST["senha"];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $cpf = isset($_POST['cpf']) ? trim($_POST['cpf']) : '';
-    $senha = isset($_POST['senha']) ? trim($_POST['senha']) : '';
+if(!isset($_POST['cpf']) || $_POST['cpf'] == ""){
+    die("Insira um cpf");
+}
 
-    if ($cpf === '' || $senha === '') {
-        $erro = "Por favor, preencha todos os campos.";
-    } else {
-        $cpf = mysqli_real_escape_string($conn, $cpf);
-        $senha = mysqli_real_escape_string($conn, $senha);
+if(!isset($_POST['senha']) || $_POST['senha'] == ""){
+    die("Insira uma senha");
+}
 
-        $sql = "SELECT nome FROM usuarios WHERE cpf = '$cpf' AND senha = '$senha'";
-        $resultado = $conn->query($sql);
+$sql = "select nome from usuarios where cpf = ? and senha = ?";
+$stmt = $conn->prepare($sql);
 
-        if ($resultado && $row = $resultado->fetch_assoc()) {
+if($stmt){
+    $stmt->bind_param("ss", $cpf, $senha);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    // Verifica se a consulta retornou resultados
+    
+    if($result->num_rows > 0){
+       $row = $result->fetch_assoc(); 
+       if($row['nome'] != ''){
+            session_start();
             $_SESSION["cpf"] = $cpf;
             $_SESSION["senha"] = $senha;
             $_SESSION["nome"] = $row['nome'];
+
             header("Location: principal.php");
-            exit;
-        } else {
-            $erro = "CPF ou senha incorretos.";
-        }
+        }else {
+            header("Location: index.php?erro=" . urlencode("CPF ou senha incorretos"));
+            exit();
+            
+    }
+    } else {
+            die("nenhum usuário encontrado");
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -41,8 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="bg-custom flex items-center justify-center">
 
-    <div class="login
-in bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-xs">
+    <div class="loginin bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-xs">
         <h2 class="text-center text-2xl font-bold mb-4">Login</h2>
         <?php if ($erro): ?>
             <div class="bg-red-500 text-white p-2 rounded mb-4">
