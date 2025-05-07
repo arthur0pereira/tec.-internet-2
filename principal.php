@@ -33,7 +33,7 @@ $nome = $_SESSION['nome'];
     <div>
         <div class="menu">
             <h2>Menu</h2>
-            <p>Filme 1</p>
+            <p><a href="cadastrarusuario.php">Cadastrar usuarios</a></p>
             <p>Filme 2</p>
             <p>Filme 3</p>
         </div>
