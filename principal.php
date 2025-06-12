@@ -33,9 +33,9 @@ $nome = $_SESSION['nome'];
     <div>
         <div class="menu">
             <h2>Menu</h2>
-            <p><a href="cadastrarusuario.php">Cadastrar usuarios</a></p>
-            <p>Filme 2</p>
-            <p>Filme 3</p>
+            <p><a href="cadastrarUsuario.php">Cadastrar usuarios</a></p>
+            <p><a href="cadastroFilmes.php">Cadastrar filmes</a></p>
+            <p><a href="item3.php">Item 3</a></p>
         </div>
 
         <div class="filmes">
@@ -45,3 +45,4 @@ $nome = $_SESSION['nome'];
 
 </body>
 </html>
+
