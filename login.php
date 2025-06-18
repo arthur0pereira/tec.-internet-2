@@ -2,45 +2,44 @@
 session_start();
 include("conexao.php");
 
-$cpf=$_POST["cpf"];
-$senha=$_POST["senha"];
+$erro = "";
 
-if(!isset($_POST['cpf']) || $_POST['cpf'] == ""){
-    die("Insira um cpf");
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $cpf = $_POST["cpf"] ?? "";
+    $senha = $_POST["senha"] ?? "";
 
-if(!isset($_POST['senha']) || $_POST['senha'] == ""){
-    die("Insira uma senha");
-}
-
-$sql = "select nome from usuarios where cpf = ? and senha = ?";
-$stmt = $conn->prepare($sql);
-
-if($stmt){
-    $stmt->bind_param("ss", $cpf, $senha);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    // Verifica se a consulta retornou resultados
-    
-    if($result->num_rows > 0){
-       $row = $result->fetch_assoc(); 
-       if($row['nome'] != ''){
-            session_start();
-            $_SESSION["cpf"] = $cpf;
-            $_SESSION["senha"] = $senha;
-            $_SESSION["nome"] = $row['nome'];
-
-            header("Location: principal.php");
-        }else {
-            header("Location: index.php?erro=" . urlencode("CPF ou senha incorretos"));
-            exit();
-            
-    }
+    if ($cpf == "") {
+        $erro = "Insira um CPF";
+    } elseif ($senha == "") {
+        $erro = "Insira uma senha";
     } else {
-            die("nenhum usuário encontrado");
+        $sql = "select nome from usuarios where cpf = ? and senha = ?";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param("ss", $cpf, $senha);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                if ($row['nome'] != '') {
+                    $_SESSION["cpf"] = $cpf;
+                    $_SESSION["senha"] = $senha;
+                    $_SESSION["nome"] = $row['nome'];
+                    header("Location: principal.php");
+                    exit();
+                } else {
+                    $erro = "CPF ou senha incorretos";
+                }
+            } else {
+                $erro = "Nenhum usuário encontrado";
+            }
+        } else {
+            $erro = "Erro na consulta ao banco de dados";
+        }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -49,34 +48,37 @@ if($stmt){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - UniFilmes</title>
-    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
-    <link rel="stylesheet" href="styles/login.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-custom flex items-center justify-center">
+<body class="bg-gradient-to-b from-gray-100 to-gray-200 min-h-screen flex items-center justify-center">
 
-    <div class="loginin bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-xs">
-        <h2 class="text-center text-2xl font-bold mb-4">Login</h2>
+    <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-purple-700 mb-6 text-center">UniFilmes</h1>
+        <h2 class="text-xl font-semibold text-gray-700 mb-4 text-center">Login</h2>
         <?php if ($erro): ?>
-            <div class="bg-red-500 text-white p-2 rounded mb-4">
+            <div class="bg-red-500 text-white p-3 rounded mb-4 text-center">
                 <?php echo htmlspecialchars($erro); ?>
             </div>
         <?php endif; ?>
-        <form method="POST" action="login.php">
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="cpf">CPF:</label>
-                <input type="text" name="cpf" id="cpf" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <form method="POST" action="login.php" class="space-y-4">
+            <div>
+                <label class="block text-gray-700 font-medium mb-1" for="cpf">CPF</label>
+                <input type="text" name="cpf" id="cpf" required
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
             </div>
-            <div class="mb-6">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="senha">Senha:</label>
-                <input type="password" name="senha" id="senha" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <div>
+                <label class="block text-gray-700 font-medium mb-1" for="senha">Senha</label>
+                <input type="password" name="senha" id="senha" required
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
             </div>
-            <div class="flex items-center justify-between">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Entrar</button>
+            <div class="flex justify-end">
+                <button type="submit"
+                    class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded transition duration-200">
+                    Entrar
+                </button>
             </div>
-        </form>
         </form>
     </div>
-</body>
-<script src="https://cdn.tailwindcss.com"></script>
 
+</body>
 </html>

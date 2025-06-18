@@ -33,7 +33,7 @@ $nome = $_SESSION['nome'];
             <nav class="flex flex-col gap-3">
                 <a href="cadastrarUsuario.php" onclick="carregarPagina('cadastrarUsuario.php'); return false;" class="py-2 px-4 rounded-lg hover:bg-purple-100 text-purple-700 font-medium transition">Cadastrar usuários</a>
                 <a href="cadastroFilmes.php" onclick="carregarPagina('cadastroFilmes.php'); return false;" class="py-2 px-4 rounded-lg hover:bg-purple-100 text-purple-700 font-medium transition">Cadastrar filmes</a>
-                <a href="item3.php" onclick="carregarPagina('item3.php'); return false;" class="py-2 px-4 rounded-lg hover:bg-purple-100 text-purple-700 font-medium transition">Item 3</a>
+                <!-- <a href="item3.php" onclick="carregarPagina('item3.php'); return false;" class="py-2 px-4 rounded-lg hover:bg-purple-100 text-purple-700 font-medium transition">Item 3</a> -->
             </nav>
         </aside>
 
