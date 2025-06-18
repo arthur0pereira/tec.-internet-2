@@ -13,19 +13,17 @@
 </head>
 
 <body>
-    <header>
-        <span>Salve <?= $_SESSION['nome']; ?></span>
-
-        <a href="./sair.php"><img src="../img/1828427.png" alt="Sair"></a>
+    <header></header>
+        <a href="principal.php">Voltar</a>
     </header>
     <main>
-        <nav>
+        <!-- <nav>
 
             <h2 class="title menu">Menu</h2>
             <p><a href="./cadastro.php">cadastrar usuario</a></p>
             <p><a href="./cadastroFilmes.php">cadastrar filmes</a> </p>
             <p><a href="./item3.php">Item 3</a></p>
-        </nav>
+        </nav> -->
 
         <div class="content">
             <?php include("conexao.php") ?>
