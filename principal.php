@@ -21,22 +21,25 @@ $nome = $_SESSION['nome'];
 <body class="bg-gradient-to-b from-gray-100 to-gray-200 min-h-screen text-gray-800">
 
     <!-- Cabeçalho -->
-    <header class="bg-gradient-to-r from-purple-600 to-blue-500 text-white p-4 flex justify-between items-center">
-        <p class="text-xl font-semibold">Bem Vindo, <?php echo htmlspecialchars($nome); ?>!</p>
-        <a href="logout.php" class="text-white font-bold hover:underline">Sair</a>
+    <header class="bg-gradient-to-r from-purple-600 to-blue-500 text-white p-4 flex justify-between items-center shadow-md">
+        <p class="text-xl font-semibold">Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</p>
+        <a href="logout.php" class="text-white font-bold hover:underline transition">Sair</a>
     </header>
 
-    <div>
-        <div class="menu">
-            <h2>Menu</h2>
-            <p><a href="cadastrarUsuario.php">Cadastrar usuarios</a></p>
-            <p><a href="cadastroFilmes.php">Cadastrar filmes</a></p>
-            <p><a href="item3.php">Item 3</a></p>
-        </div>
+    <div class="flex flex-col md:flex-row max-w-5xl mx-auto mt-10 gap-8">
+        <!-- Menu lateral -->
+        <aside class="bg-white rounded-xl shadow-lg p-6 w-full md:w-64 mb-6 md:mb-0">
+            <h2 class="text-lg font-bold text-purple-700 mb-4">Menu</h2>
+            <nav class="flex flex-col gap-3">
+                <a href="cadastrarUsuario.php" onclick="carregarPagina('cadastrarUsuario.php'); return false;" class="py-2 px-4 rounded-lg hover:bg-purple-100 text-purple-700 font-medium transition">Cadastrar usuários</a>
+                <a href="cadastroFilmes.php" onclick="carregarPagina('cadastroFilmes.php'); return false;" class="py-2 px-4 rounded-lg hover:bg-purple-100 text-purple-700 font-medium transition">Cadastrar filmes</a>
+                <a href="item3.php" onclick="carregarPagina('item3.php'); return false;" class="py-2 px-4 rounded-lg hover:bg-purple-100 text-purple-700 font-medium transition">Item 3</a>
+            </nav>
+        </aside>
 
         <!-- Conteúdo principal (dinâmico via fetch) -->
-        <main class="flex-1 bg-white rounded-xl shadow-md p-6" id="conteudo-principal">
-            <!-- Conteúdo carregado por JavaScript aparecerá aqui -->
+        <main class="flex-1 bg-white rounded-xl shadow-lg p-8 min-h-[300px]" id="conteudo-principal">
+            <p class="text-gray-500 text-center">Selecione uma opção no menu para começar.</p>
         </main>
     </div>
 
