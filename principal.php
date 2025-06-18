@@ -26,20 +26,13 @@ $nome = $_SESSION['nome'];
         <a href="logout.php" class="text-white font-bold hover:underline">Sair</a>
     </header>
 
-    <!-- Layout com menu e conteúdo -->
-    <div class="flex flex-col md:flex-row gap-6 p-6">
-        
-        <!-- Menu lateral -->
-        <aside class="w-full md:w-64 bg-white shadow-md rounded-xl p-4 space-y-4">
-            <h2 class="text-lg font-semibold text-blue-700">Menu</h2>
-            <ul class="space-y-2">
-                <li>
-                    <a href="#" onclick="carregarPagina('cadastrarusuario.php')" class="text-purple-700 hover:underline">Cadastrar usuários</a>
-                </li>
-                <li class="text-purple-700">Filme 2</li>
-                <li class="text-purple-700">Filme 3</li>
-            </ul>
-        </aside>
+    <div>
+        <div class="menu">
+            <h2>Menu</h2>
+            <p><a href="cadastrarUsuario.php">Cadastrar usuarios</a></p>
+            <p><a href="cadastroFilmes.php">Cadastrar filmes</a></p>
+            <p><a href="item3.php">Item 3</a></p>
+        </div>
 
         <!-- Conteúdo principal (dinâmico via fetch) -->
         <main class="flex-1 bg-white rounded-xl shadow-md p-6" id="conteudo-principal">
