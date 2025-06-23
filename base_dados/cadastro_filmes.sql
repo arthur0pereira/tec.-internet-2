@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19/06/2025 às 00:18
+-- Tempo de geração: 23/06/2025 às 05:32
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -39,7 +39,8 @@ CREATE TABLE `filmes` (
 --
 
 INSERT INTO `filmes` (`filme`, `nome`, `ano`, `genero_id`) VALUES
-(1, 'A volta dos não foram', '1901', 2);
+(4, 'ORAIS', '1901', 1),
+(5, 'A volta dos não foram', '1901', 1);
 
 -- --------------------------------------------------------
 
@@ -78,7 +79,6 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`nome`, `cpf`, `senha`) VALUES
-('123', '123', '123'),
 ('ARTHUR PEREIRA MORAIS', '124.140.916-14', '123');
 
 --
@@ -106,7 +106,7 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT de tabela `filmes`
 --
 ALTER TABLE `filmes`
-  MODIFY `filme` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `filme` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `generos`

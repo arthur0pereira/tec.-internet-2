@@ -54,40 +54,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php 
-                while($row = $resultado->fetch_assoc()){ ?>
+                    <?php while($row = $resultado->fetch_assoc()){ ?>
                     <tr class="border-t hover:bg-gray-50">
-                        <form method="post" action="alterarUsuario.php" class="contents">
+                        <form method="post" action="alterarUsuario.php">
                             <input type="hidden" name="cpfAnterior" value="<?=$row['cpf'];?>">
                             <td class="py-2 px-4">
-                                <input type="text" name="nome" value="<?=$row['nome'];?>"
-                                    class="w-full px-2 py-1 border rounded focus:outline-none focus:ring-1 focus:ring-purple-400">
+                                <input type="text" name="nome" value="<?=$row['nome'];?>" class="w-full px-2 py-1 border rounded">
                             </td>
                             <td class="py-2 px-4">
-                                <input type="text" name="cpf" value="<?=$row['cpf'];?>"
-                                    class="w-full px-2 py-1 border rounded focus:outline-none focus:ring-1 focus:ring-purple-400">
+                                <input type="text" name="cpf" value="<?=$row['cpf'];?>" class="w-full px-2 py-1 border rounded">
                             </td>
                             <td class="py-2 px-4">
-                                <input type="text" name="senha" value="<?=$row['senha'];?>"
-                                    class="w-full px-2 py-1 border rounded focus:outline-none focus:ring-1 focus:ring-purple-400">
+                                <input type="text" name="senha" value="<?=$row['senha'];?>" class="w-full px-2 py-1 border rounded">
                             </td>
                             <td class="py-2 px-4">
-                                <input type="submit" value="Alterar"
-                                    class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded transition">
+                                <input type="submit" value="Alterar" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded transition">
                             </td>
                         </form>
-                        <form method="post" action="apagarUsuario.php" class="inline">
-                            <input type="hidden" name="cpf" value="<?=$row['cpf'];?>">
-                            <td class="py-2 px-4">
-                                <input type="submit" value="Apagar"
-                                    class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition">
-                            </td>
-                        </form> 
+                        <td class="py-2 px-4">
+                            <form method="post" action="apagarUsuario.php">
+                                <input type="hidden" name="cpf" value="<?=$row['cpf'];?>">
+                                <input type="submit" value="Apagar" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition">
+                            </form>
+                        </td>
                     </tr>
-                <?php
-                } 
-                ?>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
     </main>
+</body>
+</html>
